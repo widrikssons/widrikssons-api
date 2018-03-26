@@ -12,10 +12,3 @@ Welcome to Widrikssons Last Mile API's documentation!
 
    resources
    errors
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
