@@ -11,6 +11,7 @@ Welcome to Widrikssons Last Mile API's documentation!
    :caption: Contents:
 
    resources
+   errors
 
 Indices and tables
 ==================
