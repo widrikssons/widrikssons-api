@@ -83,7 +83,7 @@ With a valid access token, you can make REST API calls, just include the access_
    Refresh token example will be added
 
 ======================
-Orders
+Order
 ======================
 
 .. http:get:: /v1/orders/{customer_order_id}
@@ -94,7 +94,7 @@ To get status of an order, Make a GET request to following resource.
 
    .. sourcecode:: http
       
-      GET /orders/O234422 HTTP/1.1
+      GET v1/orders/O234422 HTTP/1.1
       Host: example.com
       Content-Type: application/json
       Authorization: bearer 6agfd7adgf7gf32fkljh3kjlf==
@@ -134,7 +134,7 @@ To get status of an order, Make a GET request to following resource.
    This is example of response data. more data will be avaliable in the final version
 
 ======================
-Users
+User Orders
 ======================
 
 Following resources can be used to get users orders.
@@ -147,7 +147,7 @@ Returns all orders for a specific user.
 
    .. sourcecode:: http
       
-      GET /orders/O234422 HTTP/1.1
+      GET /v1/users/O234422/orders HTTP/1.1
       Host: example.com
       Content-Type: application/json
       Authorization: bearer 6agfd7adgf7gf32fkljh3kjlf==
