@@ -11,7 +11,7 @@ To use the api WIdrikssons will provide customers with a set of OAuth client ID 
 
 In exchange for these credentials, the authorization server issues access tokens called bearer tokens that you use for authorization when you make REST API requests.
 
-Re-use the access token until it expires. See our rate limiting guidelines. When it expires, you can get a new token.
+Re-use the access token until it expires. When it expires, you can get a new token.
 
 .. http:post:: /oauth/token
 
@@ -77,6 +77,10 @@ With a valid access token, you can make REST API calls, just include the access_
        "expires_in": 3900,
        "refresh_token": "hg23h4g23hg4h32hg4h32="
       }
+
+.. note::
+
+   Refresh token example will be added
 
 ======================
 Orders
