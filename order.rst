@@ -26,8 +26,8 @@ To create an order, Make a POST request to following resource.
         "name":"John Doe",
         "phoneNumber":"+46XXXXXX",
         "comment":"Door code is 4534",
-        "address":"Street 1",
-        "address2":"",
+        "addressLine":"Street 1",
+        "addressLine2":"",
         "postalCode":"14567",
         "city":"Stockholm",
         "selectedDate":"2018-05-20",
@@ -153,38 +153,6 @@ To get status of an order, Make a GET request to following resource.
         "comment": "Left beside the door, customer not home"
       }
     }
-
-.. sourcecode:: json
-
-   {
-     "orderId": "23hg4j23-23d23d2-d3232-d32d2",
-     "externalId": "123asd",
-     "delivery": {
-       "name":"John Doe",
-       "phoneNumber":"+46XXXXXX",
-       "comment":"Door code is 4534",
-       "address":"Street 1",
-       "address2":"",
-       "postalCode":"14567",
-       "city":"Stockholm",
-       "selectedDate":"2018-05-20",
-       "timeWindow": {
-         "start":"14:00",
-         "end":"18:00"
-       }
-     },
-     "parcelWeight":15,
-     "parcelVolume":200,
-     "parcelCount":2,
-     "orderValueIncVat":15900,
-     "status":"delivered",
-     "deliveredAt":"2018-05-21T14:13:00z",
-     "routeId":"O15",
-     "assignedDriver":{
-       "name":"Doe John",
-       "comment":"Left beside the door, customer not home"
-     }
-   }
 
 **Object**
 

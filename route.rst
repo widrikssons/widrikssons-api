@@ -5,11 +5,11 @@ Route
 Get Routes
 ======================
 
-Following resource can be used to get routing schedule.
+Following resource can be used to get routing schedule for the day.
 
-.. http:get:: /v1/users/{user_id}/orders
+.. http:get:: /v1/routes
 
-Returns all orders for a specific user.
+Returns all routes and orders for the specific day.
 
 **Example request**:
 
@@ -34,8 +34,7 @@ Returns all orders for a specific user.
 .. csv-table::
    :widths: 15, 10, 30
 
-   "**fromDate** *optional*", "string", "Filter from specific date"
-   "**toDate** *optional*", "string", "Filter to specific date"
+   "**date** *optional*", "string", "Filter for a specific date ('yyyy-MM-dd') default is today."
    
 **Example response**:
 
