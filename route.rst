@@ -47,23 +47,24 @@ Returns all routes and orders for the specific day.
 
    [
      {
-       "routeId": "23hg4j23-23d23d2-d3232-d32d2",
+       "id": "23hg4j23-23d23d2-d3232-d32d2",
        "routenumber": "K12",
        "routeDate": "2018-05-20",
        "status": "inprogress",
-       "assignedDriver": {
-         "name": "Doe John"
-       },
        "deliveries": [
          {
-           "orderId": "2323df23-23d23d2-d3232-d3234",
-           "externalId": "1234ewq",
-           "estimatedDeliveryTime": "2018-05-15T13:13:00z"
+           "id": "2323df23-23d23d2-d3232-d3234",
+           "orderNumber": "1234ewq",
+           "status": "pending",
+           "estimatedDeliveryTime": "2018-05-15T13:13:00z",
+           "trackingId": "KL825K"
          },
          {
-           "orderId": "2323df23-23d23d2-d3232-d3234",
-           "externalId": "44433",
-           "estimatedDeliveryTime": "2018-05-15T15:13:00z"
+           "id": "239e9718-8a8b-4443-a4dc-9c30c",
+           "orderNumber": "1543qwf",
+           "status": "pending",
+           "estimatedDeliveryTime": "2018-05-12T15:10:00z",
+           "trackingId": "KN8315"
          }
        ]
      },
@@ -88,13 +89,13 @@ Get Delivery
 
 .. http:get:: /v1/routes/{routeId}/deliveries/{deliveryId}
 
-To get status of an order, Make a GET request to following resource.
+To get status of an delivery, Make a GET request to following resource.
 
 **Example request**:
 
 .. sourcecode:: http
 
-   GET v1/orders/O234422 HTTP/1.1
+   GET v1/deliveries/O234422 HTTP/1.1
    Host: example.com
    Content-Type: application/json
    Authorization: bearer 6agfd7adgf7gf32fkljh3kjlf==
@@ -108,46 +109,37 @@ To get status of an order, Make a GET request to following resource.
 
 .. sourcecode:: json
 
-    {
-      "orderId": "23hg4j23-23d23d2-d3232-d32d2",
-      "externalId": "123asd",
-      "delivery": {
+ {
+    "id": "23hg4j23-23d23d2-d3232-d32d2",
+    "orderNumber": "O234422",
+    "status": "pending",
+    "consumer": {
         "name": "John Doe",
         "phoneNumber": "+46XXXXXX",
         "comment": "Door code is 4534",
-        "address": "Street 1",
-        "address2": "",
+        "adress": "Street 1",
         "postalCode": "14567",
         "city": "Stockholm",
-        "selectedDate": "2018-05-20",
-        "timeWindow": {
-          "start": "14:00",
-          "end": "18:00"
-        }
-      },
-      "parcelWeight": 15,
-      "parcelVolume": 200,
-      "parcelCount": 2,
-      "orderValueIncVat": 15900,
-      "status": "delivered",
-      "deliveredAt": "2018-05-21T14:13:00z",
-      "routeId": "O15",
-      "assignedDriver": {
-        "name": "Doe John",
-        "comment": "Left beside the door, customer not home"
-      }
-    }
-
-
+        "longitude": 20.023125,
+        "latitude": 60.729582
+    },
+    "routeNumber": "F 01",
+    "selectedDate": "2019-02-20",
+    "timeWindow": {
+        "start": "06:00",
+        "end": "08:00"
+    },
+    "trackingId": "GT2010G"
+}
 **Route:**
 
 .. csv-table::
    :widths: 15, 10, 30
 
-   "**routeId**", "string", "Assigned route number"
+   "**id**", "string", "Internal route id"
+   "**routeNumber**", "string", "Assigned route number"
    "**routeDate**", "string", "Route date"
-   "**status**", "string", "Route status"
-   "**assignedDriver** *null*", "AssignedDriver", "The assigned driver if started"
+   "**status**", "string", "Route status, 'available, assigned, loading, started, completed, canceled'"
    "**deliveries**", "Delivery *array*", "List of scheduled deliveries for the route"
 
 **Delivery:**
@@ -155,16 +147,23 @@ To get status of an order, Make a GET request to following resource.
 .. csv-table::
    :widths: 15, 10, 30
 
-   "**orderId**", "string", "Assigned route number"
-   "**externalId**", "string", "Route date"
+   "**id**", "string", "Internal delivery id"
+   "**orderNumber**", "string", "Assigned ordernumber"
+   "**status**", "string", "Delivery status, 'pending, delivered, notDelivered, issue, inprogress, unplanned, loaded'"
+   "**consumer**", "consumer *object*", "Consumer object for the delivery"
+   "**routeNumber**", "string", "Assigned routeNumber"
+   "**selectedDate**", "string", "Delivery date"
    "**estimatedDeliveryTime**", "string", "Estimated time of delivery in UTC"
+   "**timeWindow**", "Time window *object*", "Time window for the delivery"
+   "**trackingId**", "string", "Id to track the specified delivery"
 
-**AssignedDriver:**
+**TimeWindow:**
 
 .. csv-table::
    :widths: 20, 15, 60
 
-   "**name**", "string", "Assigned drivers name"
+   "**start**", "string", "Timespan in UTC"
+   "**end**", "string", "Timespan in UTC"
 
 .. note::
 
