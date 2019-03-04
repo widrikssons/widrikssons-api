@@ -69,16 +69,19 @@ Returns all routes and orders for the specific day.
        ]
      },
      {
-       "routeId": "23hg4j22-23d23d2-d3232-d32d2",
+       "id": "23hg4j22-23d23d2-d3232-d32d2",
        "routenumber": "K33",
        "routeDate": "2018-05-20",
        "status": "inprogress",
-       "assignedDriver": null,
-       "deliveries": {
-         "orderId": "2323df23-23d23d2-d3232-d3234",
-         "externalId": "1234ewq",
-         "estimatedDeliveryTime": "2018-05-15T13:13:00z"
-       }
+       "deliveries": [
+        {
+         "id": "2323df23-23d23d2-d3232-d3234",
+         "orderNumber": "1234ewq",
+         "status": "pending",
+         "estimatedDeliveryTime": "2018-05-15T13:13:00z",
+         "trackingId": "KLE25N"
+        }
+       ]
      }
    ]
 
@@ -87,7 +90,7 @@ Returns all routes and orders for the specific day.
 Get Delivery
 ======================
 
-.. http:get:: /v1/routes/{routeId}/deliveries/{deliveryId}
+.. http:get:: /v1/routes/deliveries/{orderNumber}
 
 To get status of an delivery, Make a GET request to following resource.
 
@@ -95,7 +98,7 @@ To get status of an delivery, Make a GET request to following resource.
 
 .. sourcecode:: http
 
-   GET v1/deliveries/O234422 HTTP/1.1
+   GET v1/routes/deliveries/O234422 HTTP/1.1
    Host: example.com
    Content-Type: application/json
    Authorization: bearer 6agfd7adgf7gf32fkljh3kjlf==
@@ -125,12 +128,14 @@ To get status of an delivery, Make a GET request to following resource.
     },
     "routeNumber": "F 01",
     "selectedDate": "2019-02-20",
+    "estimatedDeliveryTime": "2019-02-20T13:13:00z",
     "timeWindow": {
         "start": "06:00",
         "end": "08:00"
     },
     "trackingId": "GT2010G"
-}
+  }
+
 **Route:**
 
 .. csv-table::
